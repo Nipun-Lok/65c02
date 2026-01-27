@@ -3,7 +3,7 @@ An 8-bit breadboard computer based on the Western Design Centre 65c02 microproce
 This repository tracks my progress in digital circuit design, assembly and computer architecture design. The project is based on Ben Eater's course [Build a 6502 computer](https://eater.net/6502).
 
 ## 🧩 Components
-Most hardware components can be purchased from commercial suppliers such as [Mouser](https://au.mouser.com/), [CoreElectronics](https://core-electronics.com.au/) and [Digikey](https://www.digikey.com.au/). All required software are open source.
+Most hardware components can be purchased from commercial suppliers such as [Mouser](https://au.mouser.com/), [CoreElectronics](https://core-electronics.com.au/) and [Digikey](https://www.digikey.com.au/). All required software is open source.
 
 ### ⚙️ Hardware
 | Component | Source | Approx Price (AUD) |
@@ -24,9 +24,21 @@ Most hardware components can be purchased from commercial suppliers such as [Mou
 
 ### 💾 Software
 There are two assembler platforms used in this project:
-- [VASM](http://sun.hasenbraten.de/vasm/): A simple lightweight assembler with optomisation capabilities.
-- [cc65 cross-compiler suite](https://github.com/cc65/cc65): A development package consisting of a macro assembler, linker, C compiler and more.
-- (Optional)[minipro](https://gitlab.com/DavidGriffith/minipro): A terminal program for programming EEPROMs with the XGecu T48 on Unix systems such as macOS and Linux.
+- [VASM](http://sun.hasenbraten.de/vasm/): A simple lightweight assembler with optomisation capabilities. This is run in the terminal using:
+```bash
+    vasm6502_oldstyle -Fbin -dotdir filename.s -o filename.o
+```
+- [cc65 cross-compiler suite](https://github.com/cc65/cc65): A development package consisting of a macro assembler, linker, C compiler and more. Linker requires a `.cfg` file for segment mapping. This is run using:
+```bash
+    ca65 --cpu W65C02 filename.s -l filename.lst
+    ld65 -C filename.cfg filename.o
+```
+
+- (Optional) [minipro](https://gitlab.com/DavidGriffith/minipro): A terminal program for programming EEPROMs with the XGecu T48 on Unix systems such as macOS and Linux. This is run using:
+```bash
+    minipro -p "AT28C256" -w filename.bin
+```
+- Throughout this project several `build.sh`/`makefile` files may be made to streamline this process.
 
 ### 🔩 Additional Requirements
 Possession of standard off-the-shelf electronics components such as resistors, potentiometers, diodes, capacitors and breadboards (at least 3 required) are assumed.
