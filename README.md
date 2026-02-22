@@ -23,15 +23,15 @@ Most hardware components can be purchased from commercial suppliers such as [Mou
 | XGecu T48 Universal Programmer | Aliexpress XGecu Official Store | $68.14 |
 
 ### 💾 Software
-There are two assembler platforms used in this project:
+There are two assembler platforms used in this project than both compile a `main.bin` file:
 - [VASM](http://sun.hasenbraten.de/vasm/): A simple lightweight assembler with optomisation capabilities. This is run in the terminal using:
 ```bash
-    vasm6502_oldstyle -Fbin -dotdir filename.s -o filename.o
+    vasm6502_oldstyle -Fbin -dotdir -o filename.s filename.bin
 ```
 - [cc65 cross-compiler suite](https://github.com/cc65/cc65): A development package consisting of a macro assembler, linker, C compiler and more. Linker requires a `.cfg` file for segment mapping. This is run using:
 ```bash
     ca65 --cpu W65C02 filename.s -l filename.lst
-    ld65 -C filename.cfg filename.o
+    ld65 -C filename.cfg filename.o -m main.map
 ```
 
 - (Optional) [minipro](https://gitlab.com/DavidGriffith/minipro): A terminal program for programming EEPROMs with the XGecu T48 on Unix systems such as macOS and Linux. This is run using:
