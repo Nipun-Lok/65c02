@@ -27,9 +27,9 @@ ifeq ($(firstword $(MAKECMDGOALS)),cc65)
 
 $(OUT): $(OBJ) $(CFG)
 	@echo "Linking into $@..."
-	ld65 -C $(CFG) $(OBJ) -o $@
+	ld65 -C $(CFG) $(OBJ) -o $@ -m $(OUT:.bin=.map)
 
 endif
 
 clean:
-	rm -f *.o *.bin *.lst
+	rm -f *.o *.bin *.lst *.map
