@@ -47,12 +47,7 @@ for arg in "$@"; do
     esac
 done
 
-
-if [ -z "$COMPILER" ]; then
-    echo "Error: Missing compile method"
-    echo "Usage: ./build.sh <vasm|cc65> source.s [config.cfg]"
-    exit 1
-elif [ -z "$SRC" ]; then
+if [ -z "$SRC" ]; then
     echo "Error: Missing assembly source"
     echo "Usage: ./build.sh <vasm|cc65> source.s [config.cfg]"
     exit 1
