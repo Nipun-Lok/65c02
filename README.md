@@ -23,7 +23,7 @@ Most hardware components can be purchased from commercial suppliers such as [Mou
 | XGecu T48 Universal Programmer | Aliexpress XGecu Official Store | $68.14 |
 
 ### 💾 Software
-There are two assembler platforms used in this project than both compile a `main.bin` file:
+There are two assembler platforms used in this project:
 - [VASM](http://sun.hasenbraten.de/vasm/): A simple lightweight assembler with optomisation capabilities. This is run in the terminal using:
 ```bash
     vasm6502_oldstyle -Fbin -dotdir -o filename.s filename.bin
@@ -38,7 +38,15 @@ There are two assembler platforms used in this project than both compile a `main
 ```bash
     minipro -p "AT28C256" -w filename.bin
 ```
-- Throughout this project several `build.sh`/`makefile` files may be made to streamline this process.
+- Throughout this project several `build.sh`/`Makefile` files may be made to streamline this process. Current options include:
+```bash
+    ./vasm.sh source.s
+```
+```bash
+    ./cc65.sh source1.s source2.s linker.cfg
+```
+
+- Both build scripts compile a single `main.bin` file. The later also outputs listing files for each source file and a map file for the final binary.
 
 ### 🔩 Additional Requirements
 Possession of standard off-the-shelf electronics components such as resistors, potentiometers, diodes, capacitors and breadboards (at least 3 required) are assumed.
