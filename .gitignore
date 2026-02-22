@@ -2,6 +2,7 @@
 *.bin
 *.out
 *.lst
+*.map
 *.lab
 
 # macOS
